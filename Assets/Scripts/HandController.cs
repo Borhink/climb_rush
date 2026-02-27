@@ -7,6 +7,7 @@ public class HandController : MonoBehaviour
     private SpriteRenderer sprite;
     private bool isDragging;
     private Vector2 targetPosition;
+    private Vector2 lastPointerPosition;
 
     [SerializeField] private float dragForce = 300f;
     [SerializeField] private float maxVelocity = 10f;
@@ -23,7 +24,7 @@ public class HandController : MonoBehaviour
     public void BeginDrag(Vector2 startPosition)
     {
         isDragging = true;
-        targetPosition = startPosition;
+        lastPointerPosition = startPosition;
     }
 
     public void UpdateDrag(Vector2 newPosition)
@@ -49,18 +50,16 @@ public class HandController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        if (!isDragging) return;
+{
+    if (!isDragging) return;
 
-        Vector2 direction = targetPosition - rb.position;
+    Vector2 pointerDelta = (targetPosition - lastPointerPosition).normalized;
+    Vector2 force = pointerDelta * dragForce;
+    rb.AddForce(force, ForceMode2D.Force);
 
-        // Limite la force maximale pour éviter les comportements explosifs
-        Vector2 force = Vector2.ClampMagnitude(direction * dragForce, dragForce);
+    if (rb.linearVelocity.magnitude > maxVelocity)
+        rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
 
-        rb.AddForce(force);
-
-        // Limiter la vitesse pour garder un contrôle
-        if (rb.linearVelocity.magnitude > maxVelocity)
-            rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
-    }
+    lastPointerPosition = targetPosition;
+}
 }

@@ -443,14 +443,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftHand
       objectReference: {fileID: 0}
-    - target: {fileID: 6966461045650428783, guid: 48a3b30cd06fd574aa8bb42480f2481e, type: 3}
-      propertyPath: dragForce
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 6966461045650428783, guid: 48a3b30cd06fd574aa8bb42480f2481e, type: 3}
-      propertyPath: maxVelocity
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8555793844309609774, guid: 48a3b30cd06fd574aa8bb42480f2481e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.35

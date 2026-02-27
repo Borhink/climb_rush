@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d474b2765185a479e6de90dc5934b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandController
-  dragForce: 1500
-  maxVelocity: 10
+  dragForce: 600
+  maxVelocity: 2
 --- !u!58 &6641750035645851861
 CircleCollider2D:
   m_ObjectHideFlags: 0
