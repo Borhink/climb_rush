@@ -10,11 +10,14 @@ public class HandController : MonoBehaviour
 
     [SerializeField] private float dragForce = 300f;
     [SerializeField] private float maxVelocity = 10f;
+    private DistanceJoint2D joint;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        joint = GetComponent<DistanceJoint2D>();
+        joint.maxDistanceOnly = false;
     }
 
     public void BeginDrag(Vector2 startPosition)
@@ -31,7 +34,6 @@ public class HandController : MonoBehaviour
     public void EndDrag()
     {
         isDragging = false;
-        sprite.color = Color.brown;
     }
 
     public void BeginGrip()
